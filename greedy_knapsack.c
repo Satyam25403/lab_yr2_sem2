@@ -1,3 +1,4 @@
+//works good
 #include<stdio.h>
 #include<stdlib.h>
 struct item{
