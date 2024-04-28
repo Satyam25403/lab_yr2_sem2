@@ -12,14 +12,12 @@ int main(){
 
     int adj[n][n],path[n][n];
     printf("enter the cost-adjacency matrix:");
-    for(i=0;i<n;i++){
-        for(j=0;j<n;j++){
-            scanf("%d",&adj[i][j]);
-            if(adj[i][j]==0 && i!=j){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            scanf("%d",&path[i][j]);
+            
+            if(path[i][j]==0 && i!=j){
                 path[i][j]=infinity;
-            }
-            else{
-                path[i][j]=adj[i][j];
             }
         }
     }

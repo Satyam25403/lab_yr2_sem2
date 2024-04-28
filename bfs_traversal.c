@@ -12,19 +12,15 @@ int dequeue();
 
 int main(){
     int i,j,v,n,s,w;
-    printf("\n BFS using arrays:");
     printf("\n Enter the number of vertices:");
     scanf("%d",&n);
-    if(n<1 || n>MAX){
-        printf("Invalid input. Number of vertices should be between 1 and %d.\n",MAX);
-        exit(1);
-    }
+
     //initially no vertex is visited
     for(i=0;i<n;i++){
         visit[i]=0;
     }
 
-    printf("\nAdjacency Matrix:");
+    printf("\n Enter Adjacency Matrix:");
     for(i=0;i<n;i++){
         for(j=0;j<n;j++){
             scanf("%d",&g[i][j]);
@@ -32,11 +28,9 @@ int main(){
     }
     printf("Enter starting vertex:");
     scanf("%d",&s);
-    if(s<1 || s>n){
-        printf("Invalid input. Starting vertex should be between 1 and %d.\n",n);
-        exit(1);
-    }
+
     printf("\nBFS order:");
+    //initialize an empty queue
     for(i=0;i<n;i++){
         q[i]=0;
     }
@@ -46,11 +40,12 @@ int main(){
 
     while(!is_empty()){
         v=dequeue();
+        //for the dequeued vertex, traverse all its adjacent vertices
         for(w=0;w<n;w++){
             //if vertex is adjacent and is not visited till now
             if(g[v][w]==1 && visit[w]!=1){
                 visit[w]=1;
-                printf("%d\t",w+1);
+                printf("%d\t",w+1);//actual vertex to be printed is w 1 is added as numbering starts from 1
                 enqueue(w);
             }
         }
@@ -72,6 +67,7 @@ int dequeue(){
         printf("underflow");
     }
     if(front==rear){
+        //only one element there
         n=q[front];
         front=rear=-1;
     }
