@@ -44,11 +44,13 @@ void job_sequence(struct job arr[],int n){
     //initialize job sequence array
     int maxDeadline=max_deadline(arr,n);
     int sequence[maxDeadline];
+    //initialize slots to -1
     for(int i=0;i<maxDeadline;i++){
         sequence[i]=-1;
     }
     int sum=0;
     for(int i=0;i<n;i++){
+        //for each job in the sorted list of jobs
         for(int j=arr[i].deadline-1;j>=0;j--){
             if(sequence[j]==-1){
                 sequence[j]=arr[i].id;

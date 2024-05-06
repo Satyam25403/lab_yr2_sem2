@@ -16,7 +16,7 @@ void knapsack(int w,struct item items[],int n){
     for(i=0;i<n;i++){
         //initialize the solution array with zeroes
         solution[i]=0.0;
-        // weight/value ratio for items
+        //profit/weight ratio for items
         items[i].ratio=(double)items[i].value/items[i].weight;
         //assign indices to items to maintain the order in solution set
         items[i].index=i;
@@ -35,15 +35,16 @@ void knapsack(int w,struct item items[],int n){
 
     //fill knapsack greedily
     for(i=0;i<n;i++){
-        if(w<items[i].weight){
+        if(items[i].weight>w){
             break;
         }
+        //place 1 in the index of selected item
         solution[items[i].index]=1.0;
-        total+=items[i].value;
+        total+=items[i].value;          //profit of items included
         w-=items[i].weight;
     }
     if(i<n){
-        solution[items[i].index]=(double)w/items[i].weight;
+        solution[items[i].index]=(double)w/items[i].weight;    //fraction of object that can fit into remaining knapsack
         total+=items[i].value*solution[items[i].index];
     }
 
