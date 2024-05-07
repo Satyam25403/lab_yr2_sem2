@@ -19,6 +19,7 @@ int main(){
     scanf("%d",&sv);
     visited[sv]=1;
 
+    //loop until n-1 edges are included in spanning tree
     while(ne<n){
         //In each iteration,find the minimum cost edge that connects a visited vertex to an unvisited vertex.
         min=9999;
@@ -33,10 +34,11 @@ int main(){
                 }
             }
         }
+        //if the edge connects a visited vertex to an unvisited vertex
         if(visited[u]==0||visited[v]==0){
-            printf("edge-%d :: (%d,%d)=%d\n",ne++,a,b,min);
-            mincost+=min;
-            visited[b]=1;
+            printf("edge-%d :: (%d,%d)=%d\n",ne++,a,b,min);     //print selected edge and update visited vertices
+            mincost+=min;                                       //update minimum cost
+            visited[b]=1;                                       //mark new vertex visited
         }
         cost[a][b]=cost[b][a]=9999;
     }

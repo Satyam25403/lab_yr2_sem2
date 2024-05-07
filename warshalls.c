@@ -10,7 +10,7 @@ int main(){
     printf("\nEnter the number of vertices:");
     scanf("%d",&n);
 
-    int adj[n][n],path[n][n];
+    int path[n][n];
     printf("enter the cost-adjacency matrix:");
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){

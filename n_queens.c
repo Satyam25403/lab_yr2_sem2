@@ -36,7 +36,7 @@ bool is_safe(int board[N][N],int row,int col){
     return true;
 }
 bool solveNQUtil(int board[N][N],int col){
-    //if all queens placeed then return true
+    //if all queens placed then return true
     if(col>=N){
         return true;
     }
