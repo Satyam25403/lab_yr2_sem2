@@ -26,7 +26,7 @@ int knapsack(int capacity,int weights[],int values[],int n){
     int dp[n+1][capacity+1];
     for(int i=0;i<=n;i++){
         for(int w=0;w<=capacity;w++){
-            //base case :when there are no items or the capacity is 0
+            //base case :when there are no items(i) or the capacity(w) is 0
             if(i==0||w==0){
                 dp[i][w]=0;
             }

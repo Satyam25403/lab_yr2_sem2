@@ -1,7 +1,8 @@
 //works good
 #include<stdio.h>
 #include<stdbool.h>
-#define N 8
+#define N 4
+int solutions_count;
 void printSol(int board[N][N]){
     for(int i=0;i<N;i++){
         for(int j=0;j<N;j++){
@@ -9,6 +10,7 @@ void printSol(int board[N][N]){
         }
         printf("\n");
     }
+    printf("\n");
 }
 bool is_safe(int board[N][N],int row,int col){
     //no need to check things for right side is we place row wise and hence right coloumns will be already empty
@@ -38,7 +40,10 @@ bool is_safe(int board[N][N],int row,int col){
 bool solveNQUtil(int board[N][N],int col){
     //if all queens placed then return true
     if(col>=N){
-        return true;
+        solutions_count++;
+        printf("solution %d :\n",solutions_count);
+        printSol(board);
+        return false;
     }
     //try placing queens in all rows one by one
     for(int i=0;i<N;i++){
@@ -58,11 +63,14 @@ bool solveNQUtil(int board[N][N],int col){
 }
 bool solveNQ(){
     int board[N][N]={0};
-    if(!solveNQUtil(board,0)){
+    solutions_count=0;
+    solveNQUtil(board,0);
+    if(solutions_count==0){
         printf("Solution does not exist:");
-        return false;
     }
-    printSol(board);
+    else{
+        printf("Total solutions : %d\n",solutions_count);
+    }
     return true;
 }
 int main(){
